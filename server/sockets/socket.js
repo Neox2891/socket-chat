@@ -22,17 +22,20 @@ io.on('connection', (client) => {
         usuarios.agregarPersona(client.id, data.nombre, data.sala);
 
         client.broadcast.to(data.sala).emit('listasPersonas', usuarios.getPersonasPorSala(data.sala));
+        client.broadcast.to(data.sala).emit('crearMensaje', crearMensaje('Admin', `${ data.nombre } se unió`));
 
         cb(usuarios.getPersonasPorSala(data.sala));
     });
 
-    client.on('crearMensaje', (data) => {
+    client.on('crearMensaje', (data, cb) => {
 
         let persona = usuarios.getPersona(client.id);
 
         let mensaje = crearMensaje(persona.nombre, data.mensaje);
 
         client.broadcast.to(persona.sala).emit('crearMensaje', mensaje);
+
+        cb(mensaje);
     });
 
     client.on('disconnect', () => {
