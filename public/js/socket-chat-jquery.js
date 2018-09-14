@@ -50,14 +50,14 @@ function renderizarMensajes(mensaje, yo) {
         html += '        <h5>' + mensaje.usuario + '</h5>';
         html += '        <div class="box bg-light-inverse">' + mensaje.mensaje + '</div>';
         html += '    </div>';
-        html += '    <div class="chat-img"><img src="assets/images/users/5.jpg" alt="user" /></div>';
+        // html += '    <div class="chat-img"><img src="assets/images/users/5.jpg" alt="user" /></div>';
         html += '    <div class="chat-time">' + hora + '</div>';
         html += '</li>';
     } else {
         html += '<li class="animated fadeIn">';
-        if (mensaje.usuario !== 'Admin') {
-            html += '    <div class="chat-img"><img src="assets/images/users/1.jpg" alt="user" /></div>';
-        }
+        // if (mensaje.usuario !== 'Admin') {
+        //     html += '    <div class="chat-img"><img src="assets/images/users/1.jpg" alt="user" /></div>';
+        // }
         html += '        <div class="chat-content">';
         html += '            <h5>' + mensaje.usuario + '</h5>';
         html += '            <div class="box bg-light-' + adminClass + '">' + mensaje.mensaje + '</div>';
